@@ -3,16 +3,13 @@ use rand::Rng;
 
 fn is_sukui() -> String {
     let mut rng = rand::thread_rng();
-    let i: f32 = rng.gen();
-    if i < 0.25 {
-        "救いはあります".to_string()
-    } else if i < 0.5 {
-        "救いはありました".to_string()
-    } else if i < 0.75 {
-        "救いはありません".to_string()
-    } else {
-        "救いはないです".to_string()
-    }
+    let i: u32 = rng.gen_range(0..4);
+    match i {
+        0 => "救いはあります",
+        1 => "救いはありました",
+        2 => "救いはありません",
+        _ => "救いはないです"
+    }.to_string()
 }
 
 #[get("/")]
